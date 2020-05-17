@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-4">
+        {% if page == 'home' %}
+        <form action="/" method="POST" class="form-group">
+
+        {% elif page == 'updatehome' %}
+        <form action="/update/{{meeting.id}}" method="POST" class="form-group">
+        {% endif %}
+
+
+        <div class="form-group">
+            <label for="meetingroom">Meeting Room</label>
+            <input type="text" name="meetingroom" class="form-control" value={{meeting.meetingroom}}>
+        </div>
+        <div class="form-group">
+            <label for="">Employee</label>
+            <input type="text" name="employee" class="form-control" value={{meeting.employee}}>
+        </div>
+        <div class="form-group">
+            <label for="">Start Time</label>
+            <input type="text" name="stime" class="form-control" value={{meeting.stime}}>
+        </div>
+        <div class="form-group">
+            <label for="">End Time</label>
+            <input type="text" name="etime" class="form-control" value={{meeting.etime}}>
+        </div>
+        <button type="submit" class="btn btn-block btn-dark">Submit</button>
+            <button type="reset" class="btn btn-block btn-dark">Cancel</button>
+
+        </form>
+    </div>
+    <div class="col-lg-8">
+        <table class="table">
+            <thead>
+                <th>Meeting Room</th>
+                <th>Employee</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th></th>
+                <th></th>
+
+            </thead>
+            <tbody>
+                {% for i in meetings %}
+                <tr>
+                    <td>{{ i.meetingroom }}</td>
+                    <td>{{ i.employee }}</td>
+                    <td>{{ i.stime }}</td>
+                    <td>{{ i.etime }}</td>
+                    <td>
+                        <a href='/delete/{{i.id}}' class="btn btn-sm btn-dark">Delete</a>
+                    </td>
+                    <td>
+                        <a href='/update/{{i.id}}' class="btn btn-sm btn-dark">Update</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
