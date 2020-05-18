@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="col-lg-8">
+        <table class="table">
+            <thead>
+                <th>Meeting Room</th>
+                <th>Employee</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th></th>
+                <th></th>
+
+            </thead>
+            <tbody>
+                {% newmeet %}
+                <tr>
+                    <td>{{ newmeet.meetingroom }}</td>
+                    <td>{{ newmeet.employee }}</td>
+                    <td>{{ newmeet.stime }}</td>
+                    <td>{{ newmeet.etime }}</td>
+                    <td>
+                        <a href='/delete/{{i.id}}' class="btn btn-sm btn-dark">Delete</a>
+                    </td>
+                    <td>
+                        <a href='/update/{{i.id}}' class="btn btn-sm btn-dark">Update</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

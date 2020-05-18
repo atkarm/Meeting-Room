@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-4">
         {% if page == 'home' %}
-        <form action="/new" method="POST" class="form-group">
+        <form action="/" method="POST" class="form-group">
 
         {% elif page == 'updatehome' %}
         <form action="/update/{{meeting.id}}" method="POST" class="form-group">
@@ -28,7 +28,7 @@
             <button type="reset" class="btn btn-block btn-dark">Cancel</button>
 
         </form>
-        </form>
+
     </div>
     </div>
 {% endblock %}
