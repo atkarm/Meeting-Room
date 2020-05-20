@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,url_for
+from flask import Flask, render_template, request, redirect,url_for,flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -38,6 +38,9 @@ def new_meeting():
 def index():
     return render_template('index.html')
 
+@app.route('/pick',methods=['GET','POST'])
+def picker():
+    return render_template('picker.html')
 
 # Get List for all meeting
 
@@ -70,7 +73,11 @@ def update(id):
     else:
         meetings = Meet.query.all()
         page ='updatehome'
-        return render_template('new.html',page=page,meetings=meetings,meeting=meeting)
+        return render_template('home.html',page=page,meetings=meetings,meeting=meeting)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":

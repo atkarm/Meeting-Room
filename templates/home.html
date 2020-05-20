@@ -1,34 +1,88 @@
 {% extends 'index.html' %}
 {% block content %}
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-12">
         {% if page == 'home' %}
         <form action="/new" method="POST" class="form-group">
 
         {% elif page == 'updatehome' %}
         <form action="/update/{{meeting.id}}" method="POST" class="form-group">
         {% endif %}
-        <div class="form-group">
-            <label for="meetingroom">Meeting Room</label>
-            <input type="text" name="meetingroom" class="form-control" value={{meeting.meetingroom}}>
-        </div>
-        <div class="form-group">
-            <label for="">Employee</label>
-            <input type="text" name="employee" class="form-control" value={{meeting.employee}}>
-        </div>
-        <div class="form-group">
-            <label for="">Start Time</label>
-            <input type="text" name="stime" class="form-control" value={{meeting.stime}}>
-        </div>
-        <div class="form-group">
-            <label for="">End Time</label>
-            <input type="text" name="etime" class="form-control" value={{meeting.etime}}>
-        </div>
-        <button type="submit" class="btn btn-block btn-dark">Submit</button>
-            <button type="reset" class="btn btn-block btn-dark">Cancel</button>
+            <div class="panel-heading text-center">Reserve Meeting</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="meetingroom">Meeting Room</label>
+                            <div class="input-group">
+                            <input type="text" name="meetingroom" class="form-control" value="{{meeting.meetingroom}}">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Employee</label>
+                            <div class="input-group">
+                            <input type="text" name="employee" class="form-control" value="{{meeting.employee}}">
+                            <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <label class="control-label" for="stime">Start Time</label>
+                            <div class='input-group date' >
+                                <input type='text' class="form-control" name="stime" id='datetimepicker6' value="{{meeting.stime}}"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <label class="control-label" for="etime">End Time</label>
+                            <div class='input-group date' >
+                                <input type='text' class="form-control" name="etime" id='datetimepicker5' value="{{meeting.etime}}" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="text-left" class="col-md-6">
+                                <button type="submit" class="btn btn-block btn-dark">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="text-right">
+                                <button type="reset" class="btn btn-block btn-dark">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
         </form>
         </form>
     </div>
-    </div>
+
+
 {% endblock %}
